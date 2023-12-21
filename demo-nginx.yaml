@@ -1,0 +1,35 @@
+###
+version: '3.3'
+services:
+  demo:
+    image: nginxdemos/hello:latest
+    ports:
+     - 8081:80
+    volumes:
+      - "/tmp/:/tmp/"
+      - "/etc/localtime:/etc/localtime:ro"
+    deploy:
+      replicas: 1
+      mode: replicated
+    networks:
+     - demo
+    logging:
+      driver: json-file
+      options:
+        max-file: 1
+        max-size: 10
+    deploy:
+#      placement:
+#        constraints:
+#          - node.role == manager
+      replicas: 100
+      restart_policy:
+        condition: on-failure
+networks:
+  demo:
+    driver: overlay
+
+
+### Validar conteudo /etc/localtime
+# zdump /etc/localtime 
+
