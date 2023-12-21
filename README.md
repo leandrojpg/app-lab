@@ -1,1 +1,1 @@
-Um aplicação simples que alterar o html padrão do Nginx
+Um aplicação simples que altera o html padrão do Nginx
