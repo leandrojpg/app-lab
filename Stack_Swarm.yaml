@@ -1,0 +1,522 @@
+# this file is meant for Docker Swarm stacks only
+# trying it in compose will fail because of multiple replicas trying to bind to the same port
+# Swarm currently does not support Compose Spec, so we'll pin to the older version 3.9
+
+version: "3.9"
+
+services:
+
+  redis:
+    image: redis:alpine
+    networks:
+      - frontend
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  vote:
+    image: dockersamples/examplevotingapp_vote
+    ports:
+      - 5000:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1099:80
+    networks:
+      - backend
+
+  vote2:
+    image: dockersamples/examplevotingapp_vote
+    ports:
+      - 5002:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result3:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1019:80
+    networks:
+      - backend
+
+  vote4:
+    image: dockersamples/examplevotingapp_vote
+    ports:
+      - 1088:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+
+
+  result5:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1023:80
+    networks:
+      - backend    
+
+
+  vote6:
+    image: dockersamples/examplevotingapp_vote
+    ports:
+      - 1037:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result7:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1099:80
+    networks:
+      - backend
+
+  vote8:
+    image: dockersamples/examplevotingapp_vote
+    ports:
+      - 5008:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result9:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 9091:80
+    networks:
+      - backend
+
+  vote10:
+    image: dockersamples/examplevotingapp_vote
+    ports:
+      - 1010:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result12:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1060:80
+    networks:
+      - backend
+
+  vote13:
+    image: dockersamples/examplevotingapp_vote
+    ports:
+      - 1080:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result14:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1018:80
+    networks:
+      - backend
+
+  vote15:
+    image: dockersamples/examplevotingapp_vote
+    ports:
+      - 1050:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result16:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 5015:80
+    networks:
+      - backend
+
+  vote17:
+    image: dockersamples/examplevotingapp_vote
+    ports:
+      - 1061:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result18:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 9099:80
+    networks:
+      - backend
+
+
+  vote19:
+    image: dockersamples/examplevotingapp_vote
+    ports:
+      - 1081:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result20:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1058:80
+    networks:
+      - backend
+
+
+  vote21:
+    image: dockersamples/examplevotingapp_vote
+    ports:
+      - 1011:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result22:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1016:80
+    networks:
+      - backend                                    
+
+  worker23:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+  result24:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1014:80
+    networks:
+      - backend                                    
+
+  worker25:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+
+  result26:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1088:80
+    networks:
+      - backend                                    
+
+  worker27:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+
+  result28:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1035:80
+    networks:
+      - backend                                    
+
+  worker29:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+
+  result30:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1058:80
+    networks:
+      - backend                                    
+
+  worker31:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+
+  result32:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 8087:80
+    networks:
+      - backend                                    
+
+
+  worker33:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+
+  result34:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 9097:80
+    networks:
+      - backend                                    
+
+  worker35:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+
+
+  result36:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 6086:80
+    networks:
+      - backend                                    
+
+  worker37:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+
+  result38:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 5091:80
+    networks:
+      - backend                                    
+
+  worker39:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+
+  result40:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 6060:80
+    networks:
+      - backend                                    
+
+  worker41:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+  result42:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 5098:80
+    networks:
+      - backend                                    
+
+  worker43:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+
+  result44:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1016:80
+    networks:
+      - backend                                    
+
+  worker45:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+  
+  result46:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1096:80
+    networks:
+      - backend                                    
+
+  worker47:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+  
+  result48:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1017:80
+    networks:
+      - backend                                    
+
+  worker49:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+
+  result50:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 5050:80
+    networks:
+      - backend                                    
+
+  worker51:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+
+  result52:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 5060:80
+    networks:
+      - backend                                    
+
+
+  worker53:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+  result54:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1090:80
+    networks:
+      - backend                                    
+
+  worker55:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2      
+
+      
+  result56:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 9095:80
+    networks:
+      - backend                                    
+
+
+  worker57:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2      
+
+
+  result58:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 1057:80
+    networks:
+      - backend                                    
+
+
+  worker59:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2      
+
+
+  result60:
+    image: dockersamples/examplevotingapp_result
+    ports:
+      - 6070:80
+    networks:
+      - backend                                    
+
+  worker61:
+    image: dockersamples/examplevotingapp_worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2      
+      
+networks:
+  frontend:
+  backend:
+
+volumes:
+  db-data:
