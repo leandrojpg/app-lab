@@ -1,0 +1,90 @@
+version: "3.9"
+
+services:
+  redis:
+    image: 34.150.128.51/lab/redis:alpine
+    networks:
+      - frontend
+
+  db:
+    image: 34.150.128.51/lab/postgres:15-alpine
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  vote:
+    image: 34.150.128.51/lab/examplevotingapp_vote
+    ports:
+      - 8000:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result:
+    image: 34.150.128.51/lab/examplevotingapp_result
+    ports:
+      - 8001:80
+    networks:
+      - backend
+
+  vote2:
+    image: 34.150.128.51/lab/examplevotingapp_vote
+    ports:
+      - 8002:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result3:
+    image: 34.150.128.51/lab/examplevotingapp_result
+    ports:
+      - 8003:80
+    networks:
+      - backend
+
+  vote4:
+    image: 34.150.128.51/lab/examplevotingapp_vote
+    ports:
+      - 8004:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result5:
+    image: 34.150.128.51/lab/examplevotingapp_result
+    ports:
+      - 8005:80
+    networks:
+      - backend    
+
+  vote6:
+    image: 34.150.128.51/lab/examplevotingapp_vote
+    ports:
+      - 8006:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result7:
+    image: 34.150.128.51/lab/examplevotingapp_result
+    ports:
+      - 8007:80
+    networks:
+      - backend
+
+networks:
+  frontend:
+    name: stack4_frontend
+  backend:
+    name: stack4_backend
+
+volumes:
+  db-data:
