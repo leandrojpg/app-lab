@@ -1,15 +1,13 @@
-##Stack1
-# stack-1.yml
 version: "3.9"
 
 services:
   redis:
-    image: redis:alpine
+    image: 34.150.128.51/lab/redis:alpine
     networks:
       - frontend
 
   db:
-    image: postgres:15-alpine
+    image: 34.150.128.51/lab/postgres:15-alpine
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
@@ -19,7 +17,7 @@ services:
       - backend
 
   vote:
-    image: dockersamples/examplevotingapp_vote
+    image: 34.150.128.51/lab/examplevotingapp_vote
     ports:
       - 5000:80
     networks:
@@ -28,14 +26,14 @@ services:
       replicas: 2
 
   result:
-    image: dockersamples/examplevotingapp_result
+    image: 34.150.128.51/lab/examplevotingapp_result
     ports:
       - 5001:80
     networks:
       - backend
 
   vote2:
-    image: dockersamples/examplevotingapp_vote
+    image: 34.150.128.51/lab/examplevotingapp_vote
     ports:
       - 5002:80
     networks:
@@ -44,14 +42,14 @@ services:
       replicas: 2
 
   result3:
-    image: dockersamples/examplevotingapp_result
+    image: 34.150.128.51/lab/examplevotingapp_result
     ports:
       - 5003:80
     networks:
       - backend
 
   vote4:
-    image: dockersamples/examplevotingapp_vote
+    image: 34.150.128.51/lab/examplevotingapp_vote
     ports:
       - 5004:80
     networks:
@@ -60,14 +58,14 @@ services:
       replicas: 2
 
   result5:
-    image: dockersamples/examplevotingapp_result
+    image: 34.150.128.51/lab/examplevotingapp_result
     ports:
       - 5005:80
     networks:
       - backend    
 
   vote6:
-    image: dockersamples/examplevotingapp_vote
+    image: 34.150.128.51/lab/examplevotingapp_vote
     ports:
       - 5006:80
     networks:
@@ -76,7 +74,7 @@ services:
       replicas: 2
 
   result7:
-    image: dockersamples/examplevotingapp_result
+    image: 34.150.128.51/lab/examplevotingapp_result
     ports:
       - 5007:80
     networks:
@@ -84,7 +82,9 @@ services:
 
 networks:
   frontend:
+    name: stack1_frontend
   backend:
+    name: stack1_backend
 
 volumes:
   db-data:
