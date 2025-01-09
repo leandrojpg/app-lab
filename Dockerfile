@@ -2,6 +2,7 @@
 FROM nginx
 
 ## Aqui eu estou copiando um arquivo index.html do diretorio local  para o diretorio /usr/share/nginx/html/index.html dentro do container 
+## TESTE
 COPY . /usr/share/nginx/html
 
 
